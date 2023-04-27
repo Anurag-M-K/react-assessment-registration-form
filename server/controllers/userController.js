@@ -17,6 +17,17 @@ const registerUserData = async (req,res)=>{
     }
 }
 
+const getUsersDetails = async (req,res) => {
+    try {
+        const usersData = await User.find()
+        console.log(usersData)
+        res.status(200).json(usersData)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 module.exports = {
-    registerUserData
+    registerUserData,
+    getUsersDetails
 }

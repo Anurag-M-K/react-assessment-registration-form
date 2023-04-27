@@ -12,3 +12,16 @@ export const  addUserDetails = async (userData) =>{
         console.log(error)
     }
 }
+
+export const getUsersDetails = async () => {
+    console.log("first")
+    try {
+       const getUsersDetails = await instance({
+        url:"/get-users-details",
+        method:"GET",
+       }) 
+       return getUsersDetails.data
+    } catch (error) {
+        console.log(error)
+    }
+}
