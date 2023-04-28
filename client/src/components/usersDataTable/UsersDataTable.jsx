@@ -10,12 +10,14 @@ const UserList = () => {
   const [dataTable, setDataTable] = useState(null);
   const [users, setUsers] = useState([]);
   const [dataLoaded, setDataLoaded] = useState(false);
-  let bgChanger = 0;
+  
   useEffect(() => {
     if (dataLoaded && dataTable === null) {
       setDataTable($('#example').DataTable());
     }
   }, [dataLoaded, dataTable]);
+
+
 
   useEffect(() => {
     async function fetchData() {
@@ -29,10 +31,11 @@ const UserList = () => {
   return (
     <div className='p-28'>
       <table id="example" className="table table-striped">
-        <thead className='bg-[#9be09f]'>
+        <thead className='bg-[#cdf2c2]'>
           <tr>
+            <th className='border-b hidden text-center '>SNO</th>
             <th className='border-b text-center '>Name</th>
-            <th v>Age/Sex</th>
+            <th >Age/Sex</th>
             <th className=' text-center'>Mobile</th>
             <th className=' text-center '>Address</th>
             <th className=' text-center'>Govt ID</th>
@@ -41,19 +44,21 @@ const UserList = () => {
           </tr>
         </thead>
         <tbody className='border'>
-          {users?.map((user, id) => (
-          
-            <tr key={id} className={id%2 === 0 ? "white" : "gray"}>
-              <td className='border-b'>{user.name}</td>
-              <td className='border-b'>{user.dob}/{user.sex}</td>
-              <td className='border-b'>{user.mobile}</td>
-              <td className='border-b'>{user.address}</td>
-              <td className='border-b'>{user.pincode}</td>
-              <td className='border-b'>{user.guardianName}</td>
-              <td className='border-b'>{user.nationality}</td>
-            </tr>
-          ))}
-        </tbody>
+  {users?.map((user, index=0) => (
+  
+    <tr key={index} className={index % 2 === 0 ? "gray" : "whites" }>
+      <td className='border-b hidden '>{index +1}</td>
+      <td className={ index % 2 === 0 ? ' border border-y-gray-400' : ' border border-white '}>{user.name}</td>
+      <td className={ index % 2 === 0 ? ' border border-y-gray-400' : ' border border-white '}>{user.dob}/{user.sex}</td>
+      <td className={ index % 2 === 0 ? ' border border-y-gray-400' : ' border border-white '}>{user.mobile}</td>
+      <td className={ index % 2 === 0 ? ' border border-y-gray-400' : ' border border-white '}>{user.address}</td>
+      <td className={ index % 2 === 0 ? ' border border-y-gray-400' : ' border border-white '}>{user.pincode}</td>
+      <td className={ index % 2 === 0 ? ' border border-y-gray-400' : ' border border-white '}>{user.guardianName}</td>
+      <td className={ index % 2 === 0 ? ' border border-y-gray-400' : ' border border-white '}>{user.nationality}</td>
+    </tr>
+  ))}
+</tbody>
+
       </table>
     </div>
   );

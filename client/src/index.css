@@ -8,9 +8,6 @@ table {
    th {
     border: 1px solid black;
   }
-  /* .odd{
-    display: none;
-  } */
   .dataTables_wrapper .dataTables_filter  input{
     padding:0px;
     margin-bottom: 5px;
@@ -19,13 +16,10 @@ table {
     padding: 0px;
     margin-bottom: 5px;
   }
- 
-  .table.dataTable tbody > .gray {
+  .table.dataTable tbody > .whites {
   background-color: white;
   border: 1px solid gray;
- 
-  
   }
-  .table.dataTable tbody > .white {
-  background-color: #f2f2f2
+  .table.dataTable tbody > .gray {
+  background-color: #f0f0f0   ;
   }
