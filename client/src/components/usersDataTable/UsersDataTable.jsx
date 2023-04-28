@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-// import 'bootstrap/dist/css/bootstrap.min.css';
 import 'jquery/dist/jquery.min.js';
 import "datatables.net-dt/js/dataTables.dataTables"
 import "datatables.net-dt/css/jquery.dataTables.min.css"
 import $ from 'jquery';
 import { getUsersDetails } from '../../api/api';
+import { toast } from 'react-toastify';
 
-const UserList = () => {
+const UsersDataTable = () => {
   const [dataTable, setDataTable] = useState(null);
   const [users, setUsers] = useState([]);
   const [dataLoaded, setDataLoaded] = useState(false);
@@ -20,19 +20,23 @@ const UserList = () => {
 
 
   useEffect(() => {
-    async function fetchData() {
-      const res = await getUsersDetails();
-      setUsers(res);
-      setDataLoaded(true);
+    try {
+      async function fetchData() {
+        const res = await getUsersDetails();
+        setUsers(res);
+        setDataLoaded(true);
+      }
+      fetchData();
+    } catch (error) {
+      toast.error("Something went wrong , Please try again later!!!")
     }
-    fetchData();
   }, []);
 
   return (
     <div className='p-28'>
-      <table id="example" className="table table-striped">
+      <table id="example" className="table hover display   order-column  bg-gray-100 row-border stripe">
         <thead className='bg-[#cdf2c2]'>
-          <tr>
+          <tr className=''>
             <th className='border-b hidden text-center '>SNO</th>
             <th className='border-b text-center '>Name</th>
             <th >Age/Sex</th>
@@ -46,15 +50,15 @@ const UserList = () => {
         <tbody className='border'>
   {users?.map((user, index=0) => (
   
-    <tr key={index} className={index % 2 === 0 ? "gray" : "whites" }>
-      <td className='border-b hidden '>{index +1}</td>
-      <td className={ index % 2 === 0 ? ' border border-y-gray-400' : ' border border-white '}>{user.name}</td>
-      <td className={ index % 2 === 0 ? ' border border-y-gray-400' : ' border border-white '}>{user.dob}/{user.sex}</td>
-      <td className={ index % 2 === 0 ? ' border border-y-gray-400' : ' border border-white '}>{user.mobile}</td>
-      <td className={ index % 2 === 0 ? ' border border-y-gray-400' : ' border border-white '}>{user.address}</td>
-      <td className={ index % 2 === 0 ? ' border border-y-gray-400' : ' border border-white '}>{user.pincode}</td>
-      <td className={ index % 2 === 0 ? ' border border-y-gray-400' : ' border border-white '}>{user.guardianName}</td>
-      <td className={ index % 2 === 0 ? ' border border-y-gray-400' : ' border border-white '}>{user.nationality}</td>
+    <tr key={index} className='stripe'>
+      <td className='border-b hidden display '>{index +1}</td>
+      <td >{user.name}</td>
+      <td>{user.dob}/{user.sex}</td>
+      <td>{user.mobile}</td>
+      <td>{user.address}</td>
+      <td>{user.pincode}</td>
+      <td>{user.guardianName}</td>
+      <td>{user.nationality}</td>
     </tr>
   ))}
 </tbody>
@@ -64,4 +68,4 @@ const UserList = () => {
   );
 };
 
-export default UserList;
+export default UsersDataTable;

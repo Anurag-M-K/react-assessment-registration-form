@@ -14,7 +14,7 @@ const registerUserData = async (req,res)=>{
     } catch (error) {
         // Send an error response if there was a problem saving the user to the database
         console.log(error);
-        res.status(500).json({error: "Could not create user"});
+        res.status(500).json({error: "Could not create user",response:false});
     }
 }
 
