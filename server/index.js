@@ -7,14 +7,6 @@ const db = require("./config/connection");
 const userRouter = require("./routes/userRouter")
 
 
-//connecting frontent
-// app.use(cors({
-//     origin: 'http://127.0.0.1:5173',
-//     methods: ['GET,PUT,POST,DELETE'],
-//     preflightContinue: false,
-//     optionsSuccessStatus: 204,
-//     credentials: true
-//   }));
 app.use(cors({
     origin: 'http://localhost:5173'
   }));

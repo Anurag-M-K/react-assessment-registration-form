@@ -12,7 +12,6 @@ const registerUserData = async (req,res)=>{
         // Send a response indicating that the user was created successfully
         res.status(200).json({message: "Your data submitted successfully",response:true});
     } catch (error) {
-        // Send an error response if there was a problem saving the user to the database
         console.log(error);
         res.status(500).json({error: "Could not create user",response:false});
     }
@@ -20,7 +19,10 @@ const registerUserData = async (req,res)=>{
 
 const getUsersDetails = async (req,res) => {
     try {
+        //finding all the users data
         const usersData = await User.find()
+
+        //send response to frontend
         res.status(200).json(usersData)
     } catch (error) {
         console.log(error)

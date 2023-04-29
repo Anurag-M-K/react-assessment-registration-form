@@ -10,7 +10,6 @@ function App() {
       <Route path="/" element={ <RegistrationForm />} />
       <Route path="/user-table" element={ <UsersDataTable />} />
     </Routes>
-     
     </BrowserRouter>
     </>
   );
