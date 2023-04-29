@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+table {
+    border-collapse: collapse;
+  }
+   th {
+    border: 1px solid black;
+  }
+  .dataTables_wrapper .dataTables_filter  input{
+    padding:0px;
+    margin-bottom: 5px;
+  }
+  .dataTables_wrapper .dataTables_length select{
+    padding: 0px;
+    margin-bottom: 5px;
+  }
+  .table.dataTable tbody > .whites {
+  background-color: white;
+  border: 1px solid gray;
+  }
+  .table.dataTable tbody > .gray {
+  background-color: #f0f0f0   ;
+  }
+ 
